@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detect Key Pressed</title>
+</head>
+<body>
+    <h1 id="output">Press any key...</h1>
+
+    <script>
+        document.addEventListener('keydown', function(event) {
+            document.getElementById('output').textContent = 'You pressed: ' + event.key;
+        });
+    </script>
+</body>
+</html>
