@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Clock</title>
+</head>
+<body>
+    <h1 id="clock">00:00:00</h1>
+    <button onclick="toggleFormat()">Toggle 12/24 Hour Format</button>
+
+    <script>
+        let is24Hour = true;
+
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            if (!is24Hour) {
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12 || 12; // Convert to 12-hour format
+                document.getElementById('clock').textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)} ${ampm}`;
+            } else {
+                document.getElementById('clock').textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+            }
+        }
+
+        function pad(num) {
+            return num < 10 ? '0' + num : num;
+        }
+
+        function toggleFormat() {
+            is24Hour = !is24Hour;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
