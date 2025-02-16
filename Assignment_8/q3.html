@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel</title>
+    <style>
+        #carousel img {
+            display: none;
+            width: 300px;
+            height: 200px;
+        }
+        #carousel img.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="carousel" onmouseover="pauseCarousel()" onmouseout="startCarousel()">
+        <img src="image1.jpg" class="active">
+        <img src="image2.jpg">
+        <img src="image3.jpg">
+    </div>
+    <button onclick="prevImage()">Previous</button>
+    <button onclick="nextImage()">Next</button>
+
+    <script>
+        let currentIndex = 0;
+        let images = document.querySelectorAll('#carousel img');
+        let interval;
+
+        function showImage(index) {
+            images.forEach(img => img.classList.remove('active'));
+            images[index].classList.add('active');
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        }
+
+        function startCarousel() {
+            interval = setInterval(nextImage, 3000);
+        }
+
+        function pauseCarousel() {
+            clearInterval(interval);
+        }
+
+        startCarousel();
+    </script>
+</body>
+</html>
