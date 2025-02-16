@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Font Size Adjuster</title>
+</head>
+<body>
+    <p id="text">This is a sample paragraph. Click the buttons to adjust my font size!</p>
+    <button onclick="increaseFontSize()">Increase Font Size</button>
+    <button onclick="decreaseFontSize()">Decrease Font Size</button>
+
+    <script>
+        let fontSize = 16;
+
+        function increaseFontSize() {
+            fontSize += 2;
+            document.getElementById('text').style.fontSize = fontSize + 'px';
+        }
+
+        function decreaseFontSize() {
+            fontSize -= 2;
+            document.getElementById('text').style.fontSize = fontSize + 'px';
+        }
+    </script>
+</body>
+</html>
